@@ -32,22 +32,13 @@ export default function ShowList({ navigation, route }) {
     //dar pequeña información del personaje
     return (
         <View>
-            <FlatList
-                data= {charactersList}
-                keyExtractor={(item, index) => index.toString()}
-                renderItem={(character) => (
-                    <Character character={character} navigation={navigation} />
-                )}
-            />
-            {/* <FlatList
-            data={charactersList}
-            renderItem= {({item}) =>(
-                <View>
-                    <Text>{item.id}</Text>
-                    <Text>{item.name}</Text>
-                </View>
+        <FlatList
+            data= {charactersList}
+            keyExtractor={(item, index) => index.toString()}
+            renderItem={(character) => (
+                <Character character={character} navigation={navigation} />
             )}
-            /> */}
+        />
         </View>
     )
 }
