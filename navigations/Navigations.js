@@ -4,12 +4,9 @@ import { createStackNavigator } from "@react-navigation/stack";
 
 import ShowList from '../screens/ShowList';
 
-
-
-
 const Stack = createStackNavigator()
 
-export default function StackNavigation() {
+export default function Navigations() {
     return (
         <NavigationContainer>
             <Stack.Navigator
@@ -18,7 +15,7 @@ export default function StackNavigation() {
                 <Stack.Screen
                 name= "showList"
                 component={ShowList}
-                options={{title:"Lista Personajes"}}
+                options={{title:"Lista de Personajes"}}
                 />
             </Stack.Navigator>
         </NavigationContainer>
