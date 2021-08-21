@@ -1,13 +1,13 @@
 import React from 'react'
 import { createStackNavigator } from "@react-navigation/stack";
 import { Provider } from 'react-redux';
-import { Store } from './src/configureStore'
+import { Store } from './configureStore'
 
-import Navigations from './navigations/Navigations';
+import Navigations from '../navigations/Navigations';
 
 const Stack = createStackNavigator()
 
-export default function App() {
+function App() {
   return (
     //Utilizando un componente Navigations en el cual se crea la navegación 
     <Provider store={Store}>
@@ -15,3 +15,4 @@ export default function App() {
     </Provider>
   );
 }
+export default App

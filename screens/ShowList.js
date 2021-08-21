@@ -1,29 +1,14 @@
-import React, {useState, useEffect, useCallback} from 'react'
+import React, { useEffect } from 'react'
 import { FlatList, StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
 import { useSelector, useDispatch } from 'react-redux';
 import { getCharacters } from '../src/actions'
-import { userReducer } from '../src/reducers'
-import { useFocusEffect } from '@react-navigation/core'
 import { Icon } from 'react-native-elements';
 
 export default function ShowList({ navigation, route }) {
-    const [charactersList, setCharactersList] = useState([])
     const { characters } = useSelector(state => state.userReducer)
     const dispatch= useDispatch() 
 
     //Conseguimos la lista de personajes
-    useFocusEffect(
-        useCallback(() => {
-            async function getData() {
-                const API_URL = 'https://rickandmortyapi.com/api/character'
-                fetch(API_URL).then((data) => data.json()).then((res) =>{
-                    setCharactersList(res.results) 
-                })
-            }
-            getData()
-        }, [])
-    )
-
     useEffect(() => {
         dispatch(getCharacters())
     }, [])
@@ -32,13 +17,13 @@ export default function ShowList({ navigation, route }) {
     //dar pequeña información del personaje
     return (
         <View>
-        <FlatList
-            data= {charactersList}
-            keyExtractor={(item, index) => index.toString()}
-            renderItem={(character) => (
-                <Character character={character} navigation={navigation} />
-            )}
-        />
+            <FlatList
+                data= {characters}
+                keyExtractor={(item, index) => index.toString()}
+                renderItem={(item) => (
+                    <Character character={item} navigation={navigation} />
+                )}
+            />
         </View>
     )
 }
